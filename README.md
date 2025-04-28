@@ -42,6 +42,14 @@ Importar el Canvas desde `angular-three/dom`:
 
 ```ts
 import { NgtCanvas } from "angular-three";
+
+@Component({
+  selector: 'app-root',
+  imports: [NgtCanvas], //Importante: Colocar en los imports
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  host: { class: 'block h-dvh w-full' },
+})
 ```
 
 Usarlo en el template:
