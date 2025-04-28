@@ -41,7 +41,7 @@ npm install three@0.172.0 angular-three ngxtension animejs
 Importar el Canvas desde `angular-three/dom`:
 
 ```ts
-import { NgtCanvas } from "angular-three/dom";
+import { NgtCanvas } from "angular-three";
 ```
 
 Usarlo en el template:
@@ -94,13 +94,12 @@ export class HomeComponent {
 
 ## 🔒 Puntos Críticos y Buenas Prácticas
 
-| Tema                      | Qué hacer                                                      | Qué evitar                                   |
-| ------------------------- | -------------------------------------------------------------- | -------------------------------------------- |
-| Versiones                 | Asegúrate de usar Angular 19 + Three.js 0.172.0                | No usar Three 0.173.0 (conflicto)            |
-| ngxtension                | Instalar siempre con Angular Three                             | No olvidarlo, es obligatorio                 |
-| Color de fondo del canvas | Usar `new Color('#xxxxxx')`                                    | No usar strings directos                     |
-| Estructura de imports     | Importar de `angular-three/dom`                                | No inventar rutas inexistentes               |
-| NPM Error `ERESOLVE`      | Corrige versiones o usa `--legacy-peer-deps` sólo para pruebas | No forzar instalaciones en proyectos finales |
+| Tema                  | Qué hacer                                                      | Qué evitar                                   |
+| --------------------- | -------------------------------------------------------------- | -------------------------------------------- |
+| Versiones             | Asegúrate de usar Angular 19 + Three.js 0.172.0                | No usar Three 0.173.0 (conflicto)            |
+| ngxtension            | Instalar siempre con Angular Three                             | No olvidarlo, es obligatorio                 |
+| Estructura de imports | Importar de `angular-three`                                    | No inventar rutas inexistentes               |
+| NPM Error `ERESOLVE`  | Corrige versiones o usa `--legacy-peer-deps` sólo para pruebas | No forzar instalaciones en proyectos finales |
 
 ---
 
@@ -109,15 +108,16 @@ export class HomeComponent {
 Anime.js está instalado y listo para usar:
 
 ```ts
-import anime from "animejs/lib/anime.es.js";
+import { animate } from "animejs";
 
-anime({
-  targets: ".custom-title",
-  translateY: [-50, 0],
-  opacity: [0, 1],
-  duration: 1500,
-  easing: "easeOutExpo",
-});
+export function fadeInElement(selector: string, delay = 0) {
+  animate(selector, {
+    opacity: [0, 1],
+    translateY: [-100, 0],
+    duration: 1000,
+    easing: "easeOutQuad",
+  });
+}
 ```
 
 ---
@@ -126,7 +126,7 @@ anime({
 
 - Documentación oficial Angular Three: [https://angularthree.org](https://angularthree.org)
 - Documentación de instalación Angular Three: [https://angularthree.org/core/getting-started/installation/](https://angularthree.org/core/getting-started/installation/)
-- Documentación oficial Anime.js: [https://animejs.dev](https://animejs.dev)
+- Documentación oficial Anime.js: [https://animejs.com/](https://animejs.com/)
 - Documentación oficial Three.js: [https://threejs.org/docs/](https://threejs.org/docs/)
 
 ---
@@ -142,3 +142,5 @@ anime({
 ---
 
 ## 🌟 ¡Disfruta creando experiencias web inmersivas! 🌌
+
+### 👷🏻 Construcción de las bases para implementar las librerías 🚧
